@@ -1,0 +1,33 @@
+{% extends './layout.html' %}
+{% block title %}quote{% endblock %}
+{% block body %}
+
+<h1>    Hi!</h1>
+
+<body>
+    <!-- content -->
+    <div>
+        <form action="/posts/create" method="post">
+            <!-- <input type="hidden" name="user_id" value="{{ user['id']}}"> -->
+            <input type="text" name="content" placeholder="Post" id="">
+            <input type="submit" value="Post">
+        </form>
+    </div>
+    {% for post in posts %}
+        <div>
+            <h5><a href="/user/{{ post.user_id }}">{{ post['user'].username }} says:</a></h5>
+            <h6>{{ post['content'] }}</h6>
+
+            <h6><a href='/posts/{{post["id"]}}/like'>Like</a></h6>
+
+            <h6><a href='/posts/{{post["id"]}}'></a></h6>{{ post['user_who_like_post'] | length }} people like this</a></h6>
+
+        {% if session['user_id'] == post['user_id'] %}
+            <h6><a href='/posts/{{ post["id"] }}/delete'>Delete</a></h6>
+        {% endif %}
+        </div>
+
+    {% endfor %}
+</body>
+
+{% endblock %}

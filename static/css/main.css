@@ -1,0 +1,25 @@
+.nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 2px solid black;
+    font-size: 2rem;
+  }
+  
+    .nav--right {
+      display: flex;
+      align-items: center;
+      font-weight: normal;
+    }
+  
+      .nav h1 {
+        margin: 0;
+        font-size: inherit;
+        font-weight: normal;
+      }
+  
+      .nav--right p {
+        /* override skeleton's default styles and add space */
+        margin: 0 10px;
+      }
+  

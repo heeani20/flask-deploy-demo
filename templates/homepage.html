@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" type="text/css" 
+   href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css">
+  <link rel="stylesheet" type="text/css" 
+   href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/users_new.css') }}">
+  <title>Login or Register</title>
+</head>
+<body>
+  <div class="container">
+    <h1>Login Or Register</h1>
+    {% with messages = get_flashed_messages() %}
+      {% if messages %}
+        <ul class="flashes">
+          {% for message in messages %}
+            <li class="error">{{ message }}</li>
+          {% endfor %}
+        </ul>
+      {% endif %}
+    {% endwith %}
+    <div class="forms-wrapper">
+      <div class="form-container">
+        <h2>Register</h2>
+        <form action="/users/create" method="post">
+          <label for="first_name">First Name:</label>
+          <input type="text" name="first_name" placeholder="Vanilla">
+          <label for="last_name">Last Name:</label>
+          <input type="text" name="last_name" placeholder="Ice">
+          <label for="email">Email:</label>
+          <input type="text" name="email" placeholder="vanillaice@yahoo.com">
+          <label for="username">Username:</label>
+          <input type="text" name="username" placeholder="iceicebaby99">
+          <label for="password">Password:</label>
+          <input type="password" name="password" placeholder="word2urMother">
+          <label for="password">Confirm Passowrd:</label>
+          <input type="password" name="confirm" placeholder="">
+          
+          <input type="submit" value="Register">
+        </form>
+      </div>
+      <div class="form-container">
+        <h2>Login</h2>
+        <form action="/users/login" method="post">
+          <label for="email">Email:</label>
+          <input type="text" name="email" placeholder="vanillaice@yahoo.com">
+          <label for="password">Password:</label>
+          <input type="password" name="password" placeholder="iceicebaby99">
+          <input type="submit" value="Login">
+        </form>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
